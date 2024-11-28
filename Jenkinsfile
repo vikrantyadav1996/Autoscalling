@@ -18,21 +18,21 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 // Initialize Terraform (downloads plugins, etc.)
-                sh 'terraform init'
+                bat 'terraform init'
             }
         }
 
         stage('Terraform Plan') {
             steps {
                 // Run terraform plan to see what changes will be made
-                sh 'terraform plan -out=tfplan'
+                bat 'terraform plan -out=tfplan'
             }
         }
 
         stage('Terraform Apply') {
             steps {
                 // Apply the changes
-                sh 'terraform apply -auto-approve tfplan'
+                bat 'terraform apply -auto-approve tfplan'
             }
         }
     }
